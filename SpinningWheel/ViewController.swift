@@ -75,6 +75,9 @@ private extension ViewController {
     
     func updateHighlightedStates(indexPathToHighlight: IndexPath) {
         if let highlightedIndex = dataSource.firstIndex(where: {$0.state == .highlighted}) {
+            guard highlightedIndex != indexPathToHighlight.item else {
+                return
+            }
             dataSource[highlightedIndex].state.toggle()
             reconfigureCell(at: IndexPath(item: highlightedIndex, section: .zero))
         }
