@@ -17,6 +17,7 @@
 		DD0781972A13991B00D7A88B /* SpinningWheelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781962A13991B00D7A88B /* SpinningWheelCollectionViewCell.swift */; };
 		DD07819A2A1399BE00D7A88B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781992A1399BE00D7A88B /* UIViewExtension.swift */; };
 		DD07819C2A13B6AD00D7A88B /* SpinningWheelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD07819B2A13B6AD00D7A88B /* SpinningWheelItem.swift */; };
+		DD07819E2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD07819D2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DD0781962A13991B00D7A88B /* SpinningWheelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningWheelCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD0781992A1399BE00D7A88B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		DD07819B2A13B6AD00D7A88B /* SpinningWheelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningWheelItem.swift; sourceTree = "<group>"; };
+		DD07819D2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+LayoutExtension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0781992A1399BE00D7A88B /* UIViewExtension.swift */,
+				DD07819D2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				DD07819A2A1399BE00D7A88B /* UIViewExtension.swift in Sources */,
 				DD0781972A13991B00D7A88B /* SpinningWheelCollectionViewCell.swift in Sources */,
 				DD0781842A13952E00D7A88B /* ViewController.swift in Sources */,
+				DD07819E2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift in Sources */,
 				DD0781942A13954100D7A88B /* SpinningWheelLayout.swift in Sources */,
 				DD0781802A13952E00D7A88B /* AppDelegate.swift in Sources */,
 				DD0781822A13952E00D7A88B /* SceneDelegate.swift in Sources */,

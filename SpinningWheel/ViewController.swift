@@ -119,3 +119,4 @@ extension ViewController: UICollectionViewDelegate {
         updateHighlightedStates(indexPathToHighlight: indexPath)
     }
 }
+
