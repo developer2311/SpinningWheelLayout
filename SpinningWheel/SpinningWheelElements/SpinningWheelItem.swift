@@ -27,6 +27,7 @@ enum SpinningWheelItemType: Int, CaseIterable {
     case eighth
     case nineth
     case tenth
+    
     var color: UIColor {
         switch self {
         case .first:
