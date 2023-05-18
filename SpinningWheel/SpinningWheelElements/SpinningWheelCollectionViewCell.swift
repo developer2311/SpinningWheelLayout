@@ -40,6 +40,13 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell {
         setState(.normal)
     }
     
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+      super.apply(layoutAttributes)
+      let circularlayoutAttributes = layoutAttributes as! CircularCollectionViewLayoutAttributes
+      self.layer.anchorPoint = circularlayoutAttributes.anchorPoint
+      self.center.y += (circularlayoutAttributes.anchorPoint.y - 0.5) * CGRectGetHeight(self.bounds)
+    }
+    
     // MARK: - Internal -
     
     func configure(with item: SpinningWheelItem) {
@@ -94,7 +101,7 @@ private extension SpinningWheelCollectionViewCell {
 }
 
 private extension CGFloat {
-    static let highlightedScaleTransformCoefficient = 1.5
+    static let highlightedScaleTransformCoefficient = 1.2
     static let containerInset: CGFloat = 10
 }
 

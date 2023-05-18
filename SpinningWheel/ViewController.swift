@@ -10,7 +10,7 @@ import UIKit
 final class ViewController: UIViewController {
     
     private lazy var dataSource: [SpinningWheelItem] = {
-        let items: [SpinningWheelItem] = SpinningWheelItemType.allCases.map {
+        let items: [SpinningWheelItem] = [SpinningWheelItemType.first, .second, .third, .fourth, .fifth].map {
             .init(type: $0, state: .normal)
         }
         return items
@@ -22,17 +22,18 @@ final class ViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    private let customLayout = SpinningWheelLayout()
     private lazy var collectionView: UICollectionView = {
-        let customLayout = SpinningWheelLayout()
-        
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: customLayout
         )
         collectionView.isPagingEnabled = false
+        collectionView.bounces = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.isScrollEnabled = true
         return collectionView
     }()
     
@@ -40,6 +41,14 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupCollectionView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.collectionView.centerContentHorizontalyByInsetIfNeeded(minimumInset: .zero)
+        }
     }
 }
 
@@ -56,7 +65,7 @@ private extension ViewController {
             collectionContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            collectionContainer.heightAnchor.constraint(equalToConstant: viewHeight)
+            collectionContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: viewHeight)
         ])
         
         view.layoutIfNeeded()
@@ -66,8 +75,9 @@ private extension ViewController {
     }
     
     func reconfigureCell(at indexPath: IndexPath) {
-        let cell = collectionView.visibleCells[indexPath.item] as? SpinningWheelCollectionViewCell
-        cell?.setState(dataSource[indexPath.item].state)
+        if let cell = collectionView.cellForItem(at: indexPath) as? SpinningWheelCollectionViewCell {
+            cell.setState(dataSource[indexPath.item].state)
+        }
     }
     
     func updateHighlightedStates(indexPathToHighlight: IndexPath) {
@@ -78,10 +88,14 @@ private extension ViewController {
             dataSource[highlightedIndex].state.toggle()
             reconfigureCell(at: IndexPath(item: highlightedIndex, section: .zero))
         }
-        
+
         let newHighlightedIndex = indexPathToHighlight.item
         dataSource[newHighlightedIndex].state.toggle()
-        reconfigureCell(at: IndexPath(item: newHighlightedIndex, section: .zero))
+        let indexPathToScroll = IndexPath(item: newHighlightedIndex, section: .zero)
+
+        DispatchQueue.main.async {
+            self.reconfigureCell(at: indexPathToScroll)
+        }
     }
 }
 
