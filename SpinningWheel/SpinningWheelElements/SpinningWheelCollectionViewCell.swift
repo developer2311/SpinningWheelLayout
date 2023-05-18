@@ -7,10 +7,11 @@
 
 import UIKit
 
-final class SpinningWheelCollectionViewCell: UICollectionViewCell {
+final class SpinningWheelCollectionViewCell: UICollectionViewCell,
+                                             CollectionCellRegistable,
+                                             CollectionCellDequeueable {
     
     // MARK: - Properties -
-    static let identifier = String(describing: SpinningWheelCollectionViewCell.self)
     private lazy var container: UIView = {
         let view = UIView(frame: self.frame)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +96,6 @@ private extension SpinningWheelCollectionViewCell {
     }
     
     func setupContainer() {
-        contentView.addSubview(container)
         contentView.pinSubview(container, commonInset: .containerInset)
     }
 }
