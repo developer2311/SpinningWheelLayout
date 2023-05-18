@@ -1,0 +1,2 @@
+resources:
+	cd Resources; swiftgen
