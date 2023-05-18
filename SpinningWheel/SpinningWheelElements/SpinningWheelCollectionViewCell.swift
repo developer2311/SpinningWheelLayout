@@ -41,10 +41,10 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell {
     }
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-      super.apply(layoutAttributes)
-      let circularlayoutAttributes = layoutAttributes as! CircularCollectionViewLayoutAttributes
-      self.layer.anchorPoint = circularlayoutAttributes.anchorPoint
-      self.center.y += (circularlayoutAttributes.anchorPoint.y - 0.5) * CGRectGetHeight(self.bounds)
+        super.apply(layoutAttributes)
+        let circularlayoutAttributes = layoutAttributes as! CircularCollectionViewLayoutAttributes
+        self.layer.anchorPoint = circularlayoutAttributes.anchorPoint
+        self.center.y += (circularlayoutAttributes.anchorPoint.y - 0.5) * CGRectGetHeight(self.bounds)
     }
     
     // MARK: - Internal -
