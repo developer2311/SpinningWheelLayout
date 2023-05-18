@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 final class ViewController: UIViewController {
     
     private lazy var dataSource: [SpinningWheelItem] = {
@@ -25,14 +23,13 @@ final class ViewController: UIViewController {
         return view
     }()
     private lazy var collectionView: UICollectionView = {
-        let customLayout: UICollectionViewFlowLayout = SpinningWheelLayout()
-        customLayout.scrollDirection = .horizontal
+        let customLayout = SpinningWheelLayout()
         
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: customLayout
         )
-        collectionView.isScrollEnabled = true
+        collectionView.isPagingEnabled = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
