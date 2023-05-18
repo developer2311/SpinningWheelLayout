@@ -9,11 +9,61 @@ import UIKit
 
 final class MainViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+    // MARK: - Outlets -
+    
+    @IBOutlet private weak var container: UIView! {
+        didSet {
+            container.backgroundColor = Colors.whiteBackground.color
+        }
+    }
+    @IBOutlet private weak var staticBackgroundImageView: UIImageView! {
+        didSet {
+            staticBackgroundImageView.image = Images.chartBackground.image
+        }
+    }
+    @IBOutlet private weak var menuButton: RoundedButton! {
+        didSet {
+            menuButton.setImage(Images.mainButton.image)
+            menuButton.alpha = .zero
+        }
+    }
+    
+    // MARK: - Life Cycle -
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initiallyPresentMenuButton()
+    }
+    
+    // MARK: - Actions -
+    
+    @IBAction private func menuButonTapped(_ sender: UIButton) {
+        sender.animateSelection {
+            self.showMenu()
+        }
     }
 }
 
+// MARK: - Private methods -
 
+private extension MainViewController {
+    func showMenu() {
+        
+    }
+    
+    func initiallyPresentMenuButton() {
+        guard menuButton.alpha == .zero else {
+            return
+        }
+        UIView.animate(
+            withDuration: .presentMenuButtonAnimationDuration,
+            delay: .zero,
+            options: [.showHideTransitionViews, .curveEaseIn]) {
+                self.menuButton.alpha = 1
+            }
+    }
+}
+
+private extension Double {
+    static let presentMenuButtonAnimationDuration = 1.0
+}

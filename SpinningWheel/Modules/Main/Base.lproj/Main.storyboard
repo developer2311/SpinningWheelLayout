@@ -18,7 +18,32 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYs-Cd-mS6">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jid-Vf-jUq">
+                                        <rect key="frame" x="0.0" y="426" width="393" height="426"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0c-tV-eQs" customClass="RoundedButton" customModule="SpinningWheel" customModuleProvider="target">
+                                        <rect key="frame" x="164.66666666666666" y="760" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="4pX-YT-f7H"/>
+                                            <constraint firstAttribute="width" constant="64" id="pJx-Uj-Lil"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="menuButonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fs6-CF-co3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Jid-Vf-jUq" secondAttribute="trailing" id="6Id-qm-XrI"/>
+                                    <constraint firstItem="Jid-Vf-jUq" firstAttribute="height" secondItem="oYs-Cd-mS6" secondAttribute="height" multiplier="0.5" id="Aux-Wp-Dwv"/>
+                                    <constraint firstAttribute="bottom" secondItem="o0c-tV-eQs" secondAttribute="bottom" constant="28" id="JsF-YI-PL3"/>
+                                    <constraint firstItem="Jid-Vf-jUq" firstAttribute="leading" secondItem="oYs-Cd-mS6" secondAttribute="leading" id="QTf-tx-lUE"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jid-Vf-jUq" secondAttribute="bottom" id="l3p-7J-qTK"/>
+                                    <constraint firstItem="o0c-tV-eQs" firstAttribute="centerX" secondItem="oYs-Cd-mS6" secondAttribute="centerX" id="sZb-yd-oyg"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -30,6 +55,11 @@
                             <constraint firstItem="oYs-Cd-mS6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="aYF-NT-UV7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="container" destination="oYs-Cd-mS6" id="CGr-Pe-Xgo"/>
+                        <outlet property="menuButton" destination="o0c-tV-eQs" id="m0h-sK-MmI"/>
+                        <outlet property="staticBackgroundImageView" destination="Jid-Vf-jUq" id="Zxh-uo-Pyr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
