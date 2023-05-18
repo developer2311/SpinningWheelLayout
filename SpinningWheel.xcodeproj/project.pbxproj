@@ -25,6 +25,7 @@
 		DD0781B52A16DCDB00D7A88B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781B22A16DCDB00D7A88B /* Colors.swift */; };
 		DD0781B62A16DCDB00D7A88B /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781B32A16DCDB00D7A88B /* Images.swift */; };
 		DD0781B72A16DCDB00D7A88B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781B42A16DCDB00D7A88B /* Fonts.swift */; };
+		DD0781BB2A16DFF400D7A88B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781BA2A16DFF400D7A88B /* RoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		DD0781B22A16DCDB00D7A88B /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		DD0781B32A16DCDB00D7A88B /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		DD0781B42A16DCDB00D7A88B /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		DD0781BA2A16DFF400D7A88B /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +83,12 @@
 			isa = PBXGroup;
 			children = (
 				DD0781B12A16DAAF00D7A88B /* App */,
+				DD0781B82A16DFD700D7A88B /* Common */,
 				DD0781982A1399B100D7A88B /* Extensions */,
 				DD0781A52A16CDD400D7A88B /* Modules */,
-				DD0781A22A16BDF900D7A88B /* Tools */,
 				DD0781AB2A16D11A00D7A88B /* Resources */,
 				DD0781952A1398EF00D7A88B /* SpinningWheelElements */,
+				DD0781A22A16BDF900D7A88B /* Tools */,
 				DD07818D2A13952F00D7A88B /* Info.plist */,
 			);
 			path = SpinningWheel;
@@ -207,6 +210,22 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		DD0781B82A16DFD700D7A88B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DD0781B92A16DFE500D7A88B /* RoundedButton */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		DD0781B92A16DFE500D7A88B /* RoundedButton */ = {
+			isa = PBXGroup;
+			children = (
+				DD0781BA2A16DFF400D7A88B /* RoundedButton.swift */,
+			);
+			path = RoundedButton;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -291,6 +310,7 @@
 				DD0781A12A16BB7400D7A88B /* MenuView.swift in Sources */,
 				DD07819E2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift in Sources */,
 				DD0781942A13954100D7A88B /* SpinningWheelLayout.swift in Sources */,
+				DD0781BB2A16DFF400D7A88B /* RoundedButton.swift in Sources */,
 				DD0781802A13952E00D7A88B /* AppDelegate.swift in Sources */,
 				DD0781822A13952E00D7A88B /* SceneDelegate.swift in Sources */,
 			);
