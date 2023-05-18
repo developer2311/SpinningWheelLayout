@@ -7,18 +7,20 @@
 
 import UIKit
 
-protocol CellIdentifying: AnyObject {
-    /// Returns a reusable identifier of a cell that conforms this protocol.
+protocol Identifiable: AnyObject {
+    ///
+    /// Returns an identifier of an object that conforms this protocol. Type of `String`.
+    ///
     static var identifier: String { get }
 }
 
-extension CellIdentifying {
+extension Identifiable {
     static var identifier: String {
         return String(describing: Self.self)
     }
 }
 
-protocol CollectionCellDequeueable: CellIdentifying {
+protocol CollectionCellDequeueable: Identifiable {
     ///
     /// Dequeues reusable collection cell that is used in `cellForItem(at:)` method of `UICollectionViewDataSource`
     /// - parameters:
@@ -48,7 +50,7 @@ extension CollectionCellDequeueable {
     }
 }
 
-protocol CollectionCellRegistable: CellIdentifying {
+protocol CollectionCellRegistable: Identifiable {
     ///
     /// Register reusable collection view cell in a collection view.
     /// - parameters:
