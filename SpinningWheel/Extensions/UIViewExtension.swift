@@ -71,6 +71,32 @@ extension UIView {
         layoutIfNeeded()
     }
     
+    func pinExceptTop(
+        _ subview: UIView,
+        subviewHeight: CGFloat,
+        insets: UIEdgeInsets
+    ) {
+        addSubview(subview)
+        
+        NSLayoutConstraint.activate([
+            subview.heightAnchor.constraint(equalToConstant: subviewHeight),
+            subview.leftAnchor.constraint(
+                equalTo: leftAnchor,
+                constant: insets.left
+            ),
+            subview.rightAnchor.constraint(
+                equalTo: rightAnchor,
+                constant: -insets.right
+            ),
+            subview.bottomAnchor.constraint(
+                equalTo: bottomAnchor,
+                constant: -insets.bottom
+            )
+        ])
+        
+        layoutIfNeeded()
+    }
+    
     // MARK: - Animations -
     
     func animateSelection(

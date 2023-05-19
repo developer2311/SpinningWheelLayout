@@ -23,13 +23,13 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Images {
   internal static let borrowButton = ImageAsset(name: "borrowButton")
+  internal static let menuButton = ImageAsset(name: "menuButton")
   internal static let recieveButton = ImageAsset(name: "recieveButton")
   internal static let sendButton = ImageAsset(name: "sendButton")
   internal static let stakeButton = ImageAsset(name: "stakeButton")
   internal static let supplyButton = ImageAsset(name: "supplyButton")
   internal static let chartBackground = ImageAsset(name: "chartBackground")
   internal static let mainButton = ImageAsset(name: "mainButton")
-  internal static let menuButton = ImageAsset(name: "menuButton")
   internal static let menuHeader = ImageAsset(name: "menuHeader")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

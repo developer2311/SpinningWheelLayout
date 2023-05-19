@@ -49,7 +49,7 @@ final class SpinningWheelLayout: UICollectionViewFlowLayout {
         super.prepare()
         
         let centerX = collectionView!.contentOffset.x + (collectionView!.bounds.width / 2.0)
-        itemSize = .init(width: 70, height: 70)
+        itemSize = .init(width: 70, height: 69)
         
         scrollDirection = .horizontal
         attributesList = (0..<collectionView!.numberOfItems(inSection: 0)).map { i in

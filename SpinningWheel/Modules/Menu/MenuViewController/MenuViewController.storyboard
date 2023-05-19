@@ -25,7 +25,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohu-F5-htC">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohu-F5-htC" customClass="RoundedButton" customModule="SpinningWheel" customModuleProvider="target">
                                                     <rect key="frame" x="164.66666666666666" y="760" width="64" height="64"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -33,7 +33,10 @@
                                                         <constraint firstAttribute="height" constant="64" id="Q5Q-Wu-w1r"/>
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="mainButton"/>
+                                                    <buttonConfiguration key="configuration" style="plain"/>
+                                                    <connections>
+                                                        <action selector="closeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0xj-6H-Azi"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -63,13 +66,15 @@
                             <constraint firstAttribute="bottom" secondItem="7yP-6F-uux" secondAttribute="bottom" id="pXv-xD-NB3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="blurView" destination="fdI-nx-OLW" id="1pJ-2E-CO9"/>
+                        <outlet property="closeButton" destination="ohu-F5-htC" id="hhu-oH-vlu"/>
+                        <outlet property="container" destination="7yP-6F-uux" id="KEe-xf-yy2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="16" y="4"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="mainButton" width="64" height="64"/>
-    </resources>
 </document>

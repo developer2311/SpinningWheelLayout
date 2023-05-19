@@ -12,7 +12,7 @@ final class MenuView: UIView {
     // MARK: - Private Properties -
     
     private lazy var dataSource: [SpinningWheelItem] = {
-        let items: [SpinningWheelItem] = [SpinningWheelItemType.first, .second, .third, .fourth, .fifth].map {
+        let items: [SpinningWheelItem] = SpinningWheelItemType.allCases.map {
             .init(type: $0, state: .normal)
         }
         return items

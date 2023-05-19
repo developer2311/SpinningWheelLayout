@@ -16,40 +16,44 @@ enum SpinningWheelItemState {
     }
 }
 
-enum SpinningWheelItemType: Int, CaseIterable {
-    case first = 1
-    case second
-    case third
-    case fourth
-    case fifth
-    case sixth
-    case seventh
-    case eighth
-    case nineth
-    case tenth
+enum SpinningWheelItemType: CaseIterable {
+    case stake
+    case send
+    case receive
+    case supply
+    case borrow
     
-    var color: UIColor {
+    var image: UIImage {
         switch self {
-        case .first:
-            return .red
-        case .second:
-            return .orange
-        case .third:
-            return .yellow
-        case .fourth:
-            return .green
-        case .fifth:
-            return .blue
-        case .sixth:
-            return .black
-        case .seventh:
-            return .cyan
-        case .eighth:
-            return .orange
-        case .nineth:
-            return .darkGray
-        case .tenth:
-            return .yellow
+        case .stake:
+            return Images.stakeButton.image
+        case .send:
+            return Images.sendButton.image
+        case .receive:
+            return Images.recieveButton.image
+        case .supply:
+            return Images.supplyButton.image
+        case .borrow:
+            return Images.borrowButton.image
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .stake:
+            return .stakeItemTitle
+            
+        case .send:
+            return .sendItemTitle
+            
+        case .receive:
+            return .receiveItemTitle
+            
+        case .supply:
+            return .supplyItemTitle
+            
+        case .borrow:
+            return .borrowItemTitle
         }
     }
 }
@@ -57,4 +61,12 @@ enum SpinningWheelItemType: Int, CaseIterable {
 struct SpinningWheelItem {
     let type: SpinningWheelItemType
     var state: SpinningWheelItemState = .normal
+}
+
+private extension String {
+    static let stakeItemTitle = "Stake"
+    static let sendItemTitle = "Send"
+    static let receiveItemTitle = "Receive"
+    static let supplyItemTitle = "Supply"
+    static let borrowItemTitle = "Borrow"
 }

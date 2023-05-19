@@ -23,6 +23,3 @@ extension UIViewController {
         navigationController?.present(screenInstance, animated: animated)
     }
 }
-
-
-
