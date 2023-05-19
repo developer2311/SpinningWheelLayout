@@ -72,8 +72,9 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
     
     // MARK: - Internal -
     
-    func configure(with item: SpinningWheelItem) {
+    func configure(with item: SpinningWheelItem, shouldHideTitle: Bool) {
         imageContainer.backgroundColor = Colors.redPrimary.color
+        buttonTitleLabel.isHidden = shouldHideTitle
         setupContainers(with: item)
         setState(item.state)
         imageContainer.makeCircle()

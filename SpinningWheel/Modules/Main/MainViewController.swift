@@ -65,7 +65,7 @@ private extension MainViewController {
 }
 
 private extension Double {
-    static let presentMenuButtonAnimationDuration = 1.0
+    static let presentMenuButtonAnimationDuration = 0.7
 }
 
 extension MainViewController: IdentifiableController {}

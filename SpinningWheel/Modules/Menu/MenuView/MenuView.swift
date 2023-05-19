@@ -35,6 +35,7 @@ final class MenuView: UIView {
         collectionView.delegate = self
         return collectionView
     }()
+    private var state: MenuViewState = .simple
     
     // MARK: - Life Cycle -
     
@@ -51,6 +52,12 @@ final class MenuView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         alignContent()
+    }
+    
+    // MARK: - Internal -
+    
+    func setState(_ state: MenuViewState) {
+        self.state = state
     }
 }
 
@@ -116,7 +123,10 @@ extension MenuView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: SpinningWheelCollectionViewCell = .cell(in: collectionView, at: indexPath)
-        cell.configure(with: dataSource[indexPath.item])
+        cell.configure(
+            with: dataSource[indexPath.item],
+            shouldHideTitle: state.isItemsTitleHidden
+        )
         return cell
     }
 }
