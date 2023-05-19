@@ -48,7 +48,7 @@ final class MainViewController: UIViewController {
 
 private extension MainViewController {
     func showMenu() {
-        
+        fadePresent(to: .menu)
     }
     
     func initiallyPresentMenuButton() {
@@ -67,3 +67,5 @@ private extension MainViewController {
 private extension Double {
     static let presentMenuButtonAnimationDuration = 1.0
 }
+
+extension MainViewController: IdentifiableController {}

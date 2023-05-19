@@ -26,6 +26,10 @@
 		DD0781B62A16DCDB00D7A88B /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781B32A16DCDB00D7A88B /* Images.swift */; };
 		DD0781B72A16DCDB00D7A88B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781B42A16DCDB00D7A88B /* Fonts.swift */; };
 		DD0781BB2A16DFF400D7A88B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781BA2A16DFF400D7A88B /* RoundedButton.swift */; };
+		DD0781BD2A16E9E500D7A88B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781BC2A16E9E500D7A88B /* UIViewController+Extension.swift */; };
+		DD0781C02A16EA2600D7A88B /* NavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781BF2A16EA2600D7A88B /* NavigationRoute.swift */; };
+		DD0781C22A16F3F800D7A88B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781C12A16F3F800D7A88B /* MenuViewController.swift */; };
+		DD0781C42A16F40F00D7A88B /* MenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0781C32A16F40F00D7A88B /* MenuViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,10 @@
 		DD0781B32A16DCDB00D7A88B /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		DD0781B42A16DCDB00D7A88B /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		DD0781BA2A16DFF400D7A88B /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		DD0781BC2A16E9E500D7A88B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		DD0781BF2A16EA2600D7A88B /* NavigationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
+		DD0781C12A16F3F800D7A88B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		DD0781C32A16F40F00D7A88B /* MenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,7 @@
 			children = (
 				DD0781992A1399BE00D7A88B /* UIViewExtension.swift */,
 				DD07819D2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift */,
+				DD0781BC2A16E9E500D7A88B /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -159,6 +168,8 @@
 		DD0781A82A16CE1E00D7A88B /* MenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DD0781C12A16F3F800D7A88B /* MenuViewController.swift */,
+				DD0781C32A16F40F00D7A88B /* MenuViewController.storyboard */,
 			);
 			path = MenuViewController;
 			sourceTree = "<group>";
@@ -213,6 +224,7 @@
 		DD0781B82A16DFD700D7A88B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				DD0781BE2A16EA1500D7A88B /* Navigation */,
 				DD0781B92A16DFE500D7A88B /* RoundedButton */,
 			);
 			path = Common;
@@ -224,6 +236,14 @@
 				DD0781BA2A16DFF400D7A88B /* RoundedButton.swift */,
 			);
 			path = RoundedButton;
+			sourceTree = "<group>";
+		};
+		DD0781BE2A16EA1500D7A88B /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				DD0781BF2A16EA2600D7A88B /* NavigationRoute.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +306,7 @@
 			files = (
 				DD07818C2A13952F00D7A88B /* LaunchScreen.storyboard in Resources */,
 				DD0781AF2A16D25000D7A88B /* BRHendrix-Bold.ttf in Resources */,
+				DD0781C42A16F40F00D7A88B /* MenuViewController.storyboard in Resources */,
 				DD0781AA2A16D00000D7A88B /* Colors.xcassets in Resources */,
 				DD0781892A13952F00D7A88B /* Images.xcassets in Resources */,
 				DD0781872A13952E00D7A88B /* Main.storyboard in Resources */,
@@ -302,6 +323,7 @@
 				DD07819C2A13B6AD00D7A88B /* SpinningWheelItem.swift in Sources */,
 				DD0781B62A16DCDB00D7A88B /* Images.swift in Sources */,
 				DD0781B72A16DCDB00D7A88B /* Fonts.swift in Sources */,
+				DD0781BD2A16E9E500D7A88B /* UIViewController+Extension.swift in Sources */,
 				DD0781B52A16DCDB00D7A88B /* Colors.swift in Sources */,
 				DD07819A2A1399BE00D7A88B /* UIViewExtension.swift in Sources */,
 				DD0781A42A16BE1E00D7A88B /* UICollectionViewCell+Tools.swift in Sources */,
@@ -309,10 +331,12 @@
 				DD0781842A13952E00D7A88B /* MainViewController.swift in Sources */,
 				DD0781A12A16BB7400D7A88B /* MenuView.swift in Sources */,
 				DD07819E2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift in Sources */,
+				DD0781C22A16F3F800D7A88B /* MenuViewController.swift in Sources */,
 				DD0781942A13954100D7A88B /* SpinningWheelLayout.swift in Sources */,
 				DD0781BB2A16DFF400D7A88B /* RoundedButton.swift in Sources */,
 				DD0781802A13952E00D7A88B /* AppDelegate.swift in Sources */,
 				DD0781822A13952E00D7A88B /* SceneDelegate.swift in Sources */,
+				DD0781C02A16EA2600D7A88B /* NavigationRoute.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
