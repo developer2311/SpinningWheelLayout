@@ -15,7 +15,7 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
     private lazy var buttonTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = FontFamily.BRHendrix.bold.font(size: Constants.buttonFontSize)
+        label.font = .BRHendrixBold(of: .buttonFontSize)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -25,8 +25,8 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    private lazy var button: UIView = {
-        let view = UIView(frame: self.frame)
+    private lazy var container: UIView = {
+        let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -36,6 +36,7 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
         }
     }
     private var attributes: CircularCollectionViewLayoutAttributes?
+    static let horizontalPadding: CGFloat = 10
     
     // MARK: - Life Cycle -
     
@@ -66,10 +67,10 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
     // MARK: - Internal -
     
     func configure(with item: SpinningWheelItem) {
-        button.backgroundColor = Colors.redPrimary.color
+        container.backgroundColor = Colors.redPrimary.color
         setupButton(with: item)
         setState(item.state)
-        button.makeCircle()
+        container.makeCircle()
     }
     
     func setState(_ newValue: SpinningWheelItemState) {
@@ -105,14 +106,14 @@ private extension SpinningWheelCollectionViewCell {
             delay: .zero,
             usingSpringWithDamping: 0.8,
             initialSpringVelocity: 0.2) {
-                self.button.transform = updatedTransform
-                self.button.makeCircle()
+                self.container.transform = updatedTransform
+                self.container.makeCircle()
                 self.layoutIfNeeded()
             }
     }
     
     func setupContainer() {
-        contentView.pinSubview(button, commonInset: .containerInset)
+        contentView.pinSubview(container, commonInset: SpinningWheelCollectionViewCell.horizontalPadding)
     }
     
     func setupButton(with item: SpinningWheelItem) {
@@ -127,17 +128,15 @@ private extension SpinningWheelCollectionViewCell {
         buttonTitleLabel.text = item.type.title
         
         contentView.addSubview(buttonTitleLabel)
-        button.addSubview(buttonImageView)
+        container.addSubview(buttonImageView)
         
         NSLayoutConstraint.activate([
-            buttonImageView.heightAnchor.constraint(equalToConstant: Constants.buttonImageHeight),
-            buttonImageView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-            buttonImageView.centerYAnchor.constraint(equalTo: button.centerYAnchor)
+            buttonImageView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            buttonImageView.centerYAnchor.constraint(equalTo: container.centerYAnchor)
         ])
         NSLayoutConstraint.activate([
-            buttonTitleLabel.heightAnchor.constraint(equalToConstant: Constants.titleLabelHeight),
-            buttonTitleLabel.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-            buttonTitleLabel.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -7)
+            buttonTitleLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            buttonTitleLabel.bottomAnchor.constraint(equalTo: container.topAnchor, constant: -7)
         ])
     }
     
@@ -145,7 +144,6 @@ private extension SpinningWheelCollectionViewCell {
 
 private extension CGFloat {
     static let highlightedScaleTransformCoefficient = 1.2
-    static let containerInset: CGFloat = 10
 }
 
 private extension Double {
@@ -155,11 +153,7 @@ private extension Double {
 
 // MARK: - Constants
 
-private extension SpinningWheelCollectionViewCell {
-    enum Constants {
-        static let titleLabelHeight: CGFloat = 18
-        static let buttonImageHeight: CGFloat = 17
-        static let buttonFontSize: CGFloat = 14
-    }
+private extension CGFloat {
+    static let buttonFontSize: CGFloat = 14
 }
 

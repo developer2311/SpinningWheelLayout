@@ -33,7 +33,9 @@ final class MenuViewController: UIViewController {
     // MARK: - Actions -
     
     @IBAction private func closeButtonTapped(_ sender: UIButton) {
-        dismiss(animated: true)
+        sender.animateSelection {
+            self.dismiss(animated: true)
+        }
     }
 }
 
@@ -56,6 +58,9 @@ private extension MenuViewController {
                 right: .zero
             )
         )
+        
+        /// Moves closeButton on top of the menuView
+        container.bringSubviewToFront(closeButton)
     }
 }
 

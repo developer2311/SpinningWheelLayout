@@ -22,20 +22,28 @@ final class SpinningWheelLayout: UICollectionViewFlowLayout {
         return atan(itemSize.width / radius)
     }
     private var angleAtExtreme: CGFloat {
-        return collectionView!.numberOfItems(inSection: 0) > 0 ?
-        -CGFloat(collectionView!.numberOfItems(inSection: 0) - 1) * anglePerItem : 0
+        guard let collectionView else {
+            return .zero
+        }
+        return collectionView.numberOfItems(inSection: 0) > 0 ?
+        -CGFloat(collectionView.numberOfItems(inSection: 0) - 1) * anglePerItem : 0
     }
     private var angle: CGFloat {
-        return angleAtExtreme * collectionView!.contentOffset.x / (collectionViewContentSize.width -
-                                                                   CGRectGetWidth(collectionView!.bounds))
+        guard let collectionView else {
+            return .zero
+        }
+        return angleAtExtreme * collectionView.contentOffset.x / (collectionViewContentSize.width -
+                                                                   collectionView.bounds.width)
     }
-    
     
     // MARK: - Overriden properties
     
     override var collectionViewContentSize: CGSize {
-        return CGSize(width: CGFloat(collectionView!.numberOfItems(inSection: 0)) * itemSize.width,
-                      height: CGRectGetHeight(collectionView!.bounds))
+        guard let collectionView else {
+            return .zero
+        }
+        return CGSize(width: CGFloat(collectionView.numberOfItems(inSection: 0)) * itemSize.width,
+                      height: CGRectGetHeight(collectionView.bounds))
     }
     
     
@@ -47,25 +55,10 @@ final class SpinningWheelLayout: UICollectionViewFlowLayout {
     
     override func prepare() {
         super.prepare()
-        
-        let centerX = collectionView!.contentOffset.x + (collectionView!.bounds.width / 2.0)
-        itemSize = .init(width: 70, height: 69)
-        
-        scrollDirection = .horizontal
-        attributesList = (0..<collectionView!.numberOfItems(inSection: 0)).map { i in
-            let attributes = CircularCollectionViewLayoutAttributes(forCellWith: IndexPath(item: i, section: 0))
-            let anchorPointY = ((itemSize.height / 2.0) + radius) / itemSize.height
-            
-            attributes.size = itemSize
-            attributes.center = CGPoint(x: centerX, y: collectionView!.bounds.midY)
-            
-            attributes.angle = angle + (anglePerItem * CGFloat(i))
-            attributes.anchorPoint = CGPoint(x: 0.5, y: anchorPointY)
-            
-            return attributes
-        }
+        setItemSize()
+        setScrollDirection()
+        prepareAttributes()
     }
-    
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return attributesList
@@ -75,10 +68,54 @@ final class SpinningWheelLayout: UICollectionViewFlowLayout {
         return attributesList[indexPath.row]
     }
     
-    
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         // Enables scroll when items enough
         return true
+    }
+}
+
+private extension SpinningWheelLayout {
+    func calculateItemSize() -> CGFloat {
+        guard let collectionView else {
+            return .zero
+        }
+        
+        let numberOfItems = collectionView.numberOfItems(inSection: .zero)
+        let spacingBetweenCells = SpinningWheelCollectionViewCell.horizontalPadding*2
+        
+        let totalSpacing = CGFloat(numberOfItems - 1) * spacingBetweenCells
+        let availableWidth = collectionView.bounds.width - totalSpacing
+        let cellWidth = availableWidth / CGFloat(numberOfItems)
+        
+        return cellWidth
+    }
+    
+    func setItemSize() {
+        let itemSide = calculateItemSize()
+        itemSize = CGSize(width: itemSide, height: itemSide)
+    }
+    
+    func prepareAttributes() {
+        guard let collectionView else {
+            return
+        }
+        let centerX = collectionView.contentOffset.x + (collectionView.bounds.width / 2.0)
+        attributesList = (0..<collectionView.numberOfItems(inSection: 0)).map { i in
+            let attributes = CircularCollectionViewLayoutAttributes(forCellWith: IndexPath(item: i, section: 0))
+            let anchorPointY = ((itemSize.height / 2.0) + radius) / itemSize.height
+            
+            attributes.size = itemSize
+            attributes.center = CGPoint(x: centerX, y: collectionView.bounds.midY)
+            
+            attributes.angle = angle + (anglePerItem * CGFloat(i))
+            attributes.anchorPoint = CGPoint(x: 0.5, y: anchorPointY)
+            
+            return attributes
+        }
+    }
+    
+    func setScrollDirection() {
+        scrollDirection = .horizontal
     }
 }
 

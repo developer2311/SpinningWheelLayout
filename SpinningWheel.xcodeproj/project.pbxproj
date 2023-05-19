@@ -30,6 +30,7 @@
 		DD0781C02A16EA2600D7A88B /* NavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781BF2A16EA2600D7A88B /* NavigationRoute.swift */; };
 		DD0781C22A16F3F800D7A88B /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781C12A16F3F800D7A88B /* MenuViewController.swift */; };
 		DD0781C42A16F40F00D7A88B /* MenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0781C32A16F40F00D7A88B /* MenuViewController.storyboard */; };
+		DD89A84B2A1810A200D852AF /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A84A2A1810A200D852AF /* UIFont+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		DD0781BF2A16EA2600D7A88B /* NavigationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
 		DD0781C12A16F3F800D7A88B /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		DD0781C32A16F40F00D7A88B /* MenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuViewController.storyboard; sourceTree = "<group>"; };
+		DD89A84A2A1810A200D852AF /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				DD0781992A1399BE00D7A88B /* UIViewExtension.swift */,
 				DD07819D2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift */,
 				DD0781BC2A16E9E500D7A88B /* UIViewController+Extension.swift */,
+				DD89A84A2A1810A200D852AF /* UIFont+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				DD0781BD2A16E9E500D7A88B /* UIViewController+Extension.swift in Sources */,
 				DD0781B52A16DCDB00D7A88B /* Colors.swift in Sources */,
 				DD07819A2A1399BE00D7A88B /* UIViewExtension.swift in Sources */,
+				DD89A84B2A1810A200D852AF /* UIFont+Extension.swift in Sources */,
 				DD0781A42A16BE1E00D7A88B /* UICollectionViewCell+Tools.swift in Sources */,
 				DD0781972A13991B00D7A88B /* SpinningWheelCollectionViewCell.swift in Sources */,
 				DD0781842A13952E00D7A88B /* MainViewController.swift in Sources */,

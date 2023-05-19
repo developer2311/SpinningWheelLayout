@@ -24,33 +24,29 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="r6d-Gx-jQx">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohu-F5-htC" customClass="RoundedButton" customModule="SpinningWheel" customModuleProvider="target">
-                                                    <rect key="frame" x="164.66666666666666" y="760" width="64" height="64"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="64" id="0jh-kh-lIv"/>
-                                                        <constraint firstAttribute="height" constant="64" id="Q5Q-Wu-w1r"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain"/>
-                                                    <connections>
-                                                        <action selector="closeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0xj-6H-Azi"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="ohu-F5-htC" secondAttribute="bottom" constant="28" id="OaU-oR-xHj"/>
-                                                <constraint firstItem="ohu-F5-htC" firstAttribute="centerX" secondItem="r6d-Gx-jQx" secondAttribute="centerX" id="ibk-rz-jwa"/>
-                                            </constraints>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <blurEffect style="light"/>
                                     </visualEffectView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohu-F5-htC" customClass="RoundedButton" customModule="SpinningWheel" customModuleProvider="target">
+                                        <rect key="frame" x="164.66666666666666" y="760" width="64" height="64"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="0jh-kh-lIv"/>
+                                            <constraint firstAttribute="height" constant="64" id="Q5Q-Wu-w1r"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="closeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0xj-6H-Azi"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="fdI-nx-OLW" firstAttribute="leading" secondItem="7yP-6F-uux" secondAttribute="leading" id="282-Zb-Nbw"/>
+                                    <constraint firstItem="ohu-F5-htC" firstAttribute="centerX" secondItem="7yP-6F-uux" secondAttribute="centerX" id="6nl-bJ-zbQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="ohu-F5-htC" secondAttribute="bottom" constant="28" id="7Pk-QW-wo0"/>
                                     <constraint firstItem="fdI-nx-OLW" firstAttribute="top" secondItem="7yP-6F-uux" secondAttribute="top" id="Iue-Xl-VaX"/>
                                     <constraint firstAttribute="bottom" secondItem="fdI-nx-OLW" secondAttribute="bottom" id="wid-TI-hbf"/>
                                     <constraint firstAttribute="trailing" secondItem="fdI-nx-OLW" secondAttribute="trailing" id="yVG-QN-ZWU"/>
