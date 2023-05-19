@@ -114,6 +114,7 @@ private extension SpinningWheelCollectionViewCell {
             usingSpringWithDamping: 0.8,
             initialSpringVelocity: 0.2) {
                 self.imageContainer.transform = updatedTransform
+                self.buttonTitleLabel.transform = updatedTransform
                 self.imageContainer.makeCircle()
                 self.layoutIfNeeded()
             }
