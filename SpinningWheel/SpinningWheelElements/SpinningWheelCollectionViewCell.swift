@@ -12,6 +12,12 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
                                              CollectionCellDequeueable {
     
     // MARK: - Properties -
+    
+    private lazy var container: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     private lazy var buttonTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -25,7 +31,7 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    private lazy var container: UIView = {
+    private lazy var imageContainer: UIView = {
         let view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -67,10 +73,10 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
     // MARK: - Internal -
     
     func configure(with item: SpinningWheelItem) {
-        container.backgroundColor = Colors.redPrimary.color
-        setupButton(with: item)
+        imageContainer.backgroundColor = Colors.redPrimary.color
+        setupContainers(with: item)
         setState(item.state)
-        container.makeCircle()
+        imageContainer.makeCircle()
     }
     
     func setState(_ newValue: SpinningWheelItemState) {
@@ -106,40 +112,39 @@ private extension SpinningWheelCollectionViewCell {
             delay: .zero,
             usingSpringWithDamping: 0.8,
             initialSpringVelocity: 0.2) {
-                self.container.transform = updatedTransform
-                self.container.makeCircle()
+                self.imageContainer.transform = updatedTransform
+                self.imageContainer.makeCircle()
                 self.layoutIfNeeded()
             }
     }
     
     func setupContainer() {
         contentView.pinSubview(container, commonInset: SpinningWheelCollectionViewCell.horizontalPadding)
+        container.pinSubview(imageContainer)
     }
     
-    func setupButton(with item: SpinningWheelItem) {
-        /// rotate to 0
-        //        if let attributes = attributes {
-        //            let zeroAngle = -attributes.angle + 0.45
-        //            buttonImageView.transform = CGAffineTransformMakeRotation(zeroAngle)
-        //            buttonTitleLabel.transform = CGAffineTransformMakeRotation(zeroAngle)
-        //        }
-        
-        buttonImageView.image = item.type.image
+    func setupContainers(with item: SpinningWheelItem) {
+        setupTitle(with: item)
+        setupImage(with: item)
+    }
+    
+    func setupTitle(with item: SpinningWheelItem) {
         buttonTitleLabel.text = item.type.title
-        
-        contentView.addSubview(buttonTitleLabel)
-        container.addSubview(buttonImageView)
-        
-        NSLayoutConstraint.activate([
-            buttonImageView.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-            buttonImageView.centerYAnchor.constraint(equalTo: container.centerYAnchor)
-        ])
+        container.addSubview(buttonTitleLabel)
         NSLayoutConstraint.activate([
             buttonTitleLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor),
             buttonTitleLabel.bottomAnchor.constraint(equalTo: container.topAnchor, constant: -7)
         ])
     }
     
+    func setupImage(with item: SpinningWheelItem) {
+        buttonImageView.image = item.type.image
+        imageContainer.addSubview(buttonImageView)
+        NSLayoutConstraint.activate([
+            buttonImageView.centerXAnchor.constraint(equalTo: imageContainer.centerXAnchor),
+            buttonImageView.centerYAnchor.constraint(equalTo: imageContainer.centerYAnchor)
+        ])
+    }
 }
 
 private extension CGFloat {
