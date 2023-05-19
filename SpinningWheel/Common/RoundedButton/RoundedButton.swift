@@ -9,6 +9,8 @@ import UIKit
 
 final class RoundedButton: UIButton {
     
+    private var shadowOpacity: Float = 0.4
+    
     // MARK: - Life Cycle -
     
     override func layoutSubviews() {
@@ -21,11 +23,15 @@ final class RoundedButton: UIButton {
     func setImage(_ image: UIImage?) {
         setImage(image, for: .normal)
     }
+    
+    func setShadowOpacity(_ value: Float) {
+        shadowOpacity = value
+    }
 }
 
 private extension RoundedButton {
     func setup() {
         makeCircle()
-        addDropShadow()
+        addDropShadow(shadowOpacity: shadowOpacity)
     }
 }
