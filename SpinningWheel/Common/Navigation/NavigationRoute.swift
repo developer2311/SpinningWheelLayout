@@ -9,22 +9,22 @@ import UIKit
 
 enum NavigationRoute {
     case main
-    case menu
+    case menu(viewModel: MenuViewModel)
     
     var storyboardScreen: StoryboardScreen {
         switch self {
         case .main:
             return .main
             
-        case .menu:
-            return .menu
+        case .menu(let viewModel):
+            return .menu(viewModel: viewModel)
         }
     }
 }
 
 enum StoryboardScreen {
     case main
-    case menu
+    case menu(viewModel: MenuViewModel)
     
     func instance() -> UIViewController {
         switch self {
@@ -32,8 +32,9 @@ enum StoryboardScreen {
             let instance: MainViewController = StoryboardScreen.instance()
             return instance
             
-        case .menu:
+        case .menu(let viewModel):
             let instance: MenuViewController = StoryboardScreen.instance()
+            instance.viewModel = viewModel
             return instance
         }
     }

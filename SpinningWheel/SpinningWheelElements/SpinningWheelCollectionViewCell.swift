@@ -92,16 +92,11 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
 
 private extension SpinningWheelCollectionViewCell {
     func handleStateUpdates() {
-        let scaledTransform = CGAffineTransform(
-            scaleX: .highlightedScaleTransformCoefficient,
-            y: .highlightedScaleTransformCoefficient
-        )
-        
         var updatedTransform: CGAffineTransform = .identity
         var animationDuration: Double = .zero
         switch self.itemState {
         case .highlighted:
-            updatedTransform = scaledTransform
+            updatedTransform = .scaledTransform
             animationDuration = .updateStateToScaledAnimationDuration
         case .normal:
             updatedTransform = .identity
@@ -147,10 +142,6 @@ private extension SpinningWheelCollectionViewCell {
             buttonImageView.centerYAnchor.constraint(equalTo: imageContainer.centerYAnchor)
         ])
     }
-}
-
-private extension CGFloat {
-    static let highlightedScaleTransformCoefficient = 1.2
 }
 
 private extension Double {

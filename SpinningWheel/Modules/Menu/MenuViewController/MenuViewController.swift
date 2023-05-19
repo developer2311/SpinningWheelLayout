@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Combine
+import SwiftUI
 
 final class MenuViewController: UIViewController {
     
@@ -22,8 +24,21 @@ final class MenuViewController: UIViewController {
         let view = MenuView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.alpha = .zero
+        view.setState(viewModel.menuState)
+        view.onFinishInteraction = { [weak self] selectedItem in
+            self?.viewModel.onFinishMenuInteraction(with: selectedItem)
+            self?.close()
+        }
+        view.onStateChanged = { [weak self] newValue in
+            self?.viewModel.menuState = newValue
+            self?.closeButton.isHidden = newValue == .interactive
+        }
         return view
     }()
+        
+    // MARK: - Properties -
+    
+    var viewModel: MenuViewModel!
     
     // MARK: - Life Cycle -
     
@@ -41,7 +56,7 @@ final class MenuViewController: UIViewController {
     
     @IBAction private func closeButtonTapped(_ sender: UIButton) {
         sender.animateSelection {
-            self.dismiss(animated: true)
+            self.close()
         }
     }
 }
@@ -52,6 +67,10 @@ private extension MenuViewController {
     
     func initialSetup() {
         setupMenuView()
+    }
+    
+    func close() {
+        dismiss(animated: true)
     }
     
     func setupMenuView() {

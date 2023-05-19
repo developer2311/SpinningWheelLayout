@@ -9,6 +9,9 @@ import UIKit
 
 final class MenuView: UIView {
     
+    var onFinishInteraction: ((_ selectedItem: SpinningWheelItem?) -> Void)?
+    var onStateChanged: ((_ newValue: MenuViewState) -> Void)?
+    
     // MARK: - Private Properties -
     
     private lazy var dataSource: [SpinningWheelItem] = {
@@ -42,8 +45,20 @@ final class MenuView: UIView {
         )
         return recognizer
     }()
-    private var state: MenuViewState = .simple
+    private var state: MenuViewState = .simple {
+        didSet {
+            onStateChanged?(state)
+            collectionView.reloadData()
+        }
+    }
     private var selectedItemIndex: Int?
+    private var selectedItem: SpinningWheelItem? {
+        guard let selectedItemIndex else {
+            return nil
+        }
+        return dataSource[selectedItemIndex]
+    }
+    
     
     // MARK: - Life Cycle -
     
@@ -86,7 +101,6 @@ private extension MenuView {
         SpinningWheelCollectionViewCell.registerClass(in: collectionView)
         layoutCollectionView()
         collectionContainer.addGestureRecognizer(panGesture)
-        collectionView.reloadData()
     }
     
     func layoutCollectionView() {
@@ -127,20 +141,33 @@ private extension MenuView {
 
         dataSource[newHighlightedIndex].state.toggle()
         
+        // Finishes interaction and passes a selected item only when a state is not interactive
+        if state == .simple {
+            onFinishInteraction?(selectedItem)
+            return
+        }
+        
         DispatchQueue.main.async { [weak self] in
             self?.reconfigureCell(at: IndexPath(item: newHighlightedIndex, section: .zero))
         }
     }
     
     @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
-        
         let touchLocation = recognizer.location(in: collectionContainer)
         
         switch recognizer.state {
         case .began:
+            if state != .interactive {
+                state = .interactive
+            }
             highlightItemIfIntersects(with: touchLocation)
         case .changed:
             highlightItemIfIntersects(with: touchLocation)
+        case .ended:
+            guard state == .interactive else {
+                return
+            }
+            onFinishInteraction?(selectedItem)
         default:
             break
         }
