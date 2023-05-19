@@ -35,7 +35,15 @@ final class MenuView: UIView {
         collectionView.delegate = self
         return collectionView
     }()
+    private lazy var panGesture: UIPanGestureRecognizer = {
+        let recognizer = UIPanGestureRecognizer(
+            target: self,
+            action: #selector(handlePanGesture(_:))
+        )
+        return recognizer
+    }()
     private var state: MenuViewState = .simple
+    private var selectedItemIndex: Int?
     
     // MARK: - Life Cycle -
     
@@ -68,7 +76,7 @@ private extension MenuView {
         setupCollectionView()
     }
     
-    private func alignContent() {
+    func alignContent() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             self?.collectionView.centerContentHorizontalyByInsetIfNeeded(minimumInset: .zero)
         }
@@ -77,6 +85,7 @@ private extension MenuView {
     func setupCollectionView() {
         SpinningWheelCollectionViewCell.registerClass(in: collectionView)
         layoutCollectionView()
+        collectionContainer.addGestureRecognizer(panGesture)
         collectionView.reloadData()
     }
     
@@ -97,6 +106,13 @@ private extension MenuView {
     ///    - indexPathToHighlight: Index of the item that is going to be highlighted after the selection. Type of `IndexPath`
     ///
     func updateHighlightedStates(indexPathToHighlight: IndexPath) {
+        // Prevents the duplication action for the cell in the same index
+        if let selectedItemIndex,
+           indexPathToHighlight.item == selectedItemIndex {
+            return
+        }
+        
+        // Dehighlights the old highlighted value before highlighting a new one
         if let highlightedIndex = dataSource.firstIndex(where: {$0.state == .highlighted}) {
             guard highlightedIndex != indexPathToHighlight.item else {
                 return
@@ -105,11 +121,39 @@ private extension MenuView {
             reconfigureCell(at: IndexPath(item: highlightedIndex, section: .zero))
         }
 
+        // Highlights a new item
         let newHighlightedIndex = indexPathToHighlight.item
+        self.selectedItemIndex = newHighlightedIndex
+
         dataSource[newHighlightedIndex].state.toggle()
         
         DispatchQueue.main.async { [weak self] in
             self?.reconfigureCell(at: IndexPath(item: newHighlightedIndex, section: .zero))
+        }
+    }
+    
+    @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
+        
+        let touchLocation = recognizer.location(in: collectionContainer)
+        
+        switch recognizer.state {
+        case .began:
+            highlightItemIfIntersects(with: touchLocation)
+        case .changed:
+            highlightItemIfIntersects(with: touchLocation)
+        default:
+            break
+        }
+    }
+    
+    func highlightItemIfIntersects(with location: CGPoint) {
+        for cell in collectionView.visibleCells {
+            if cell.frame.contains(location) {
+                if let indexPath = collectionView.indexPath(for: cell) {
+                    updateHighlightedStates(indexPathToHighlight: indexPath)
+                }
+                break
+            }
         }
     }
 }
