@@ -76,16 +76,17 @@ private extension MenuViewController {
     }
     
     func setupMenuView() {
-        container.pinExceptTop(
-            menuView,
-            subviewHeight: .menuViewHeight,
-            insets: .init(
-                top: .zero,
-                left: .zero,
-                bottom: .menuViewBottomPadding,
-                right: .zero
-            )
-        )
+        container.addSubview(menuView)
+        
+        NSLayoutConstraint.activate([
+            menuView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            menuView.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            menuView.heightAnchor.constraint(equalToConstant: .menuViewHeight),
+            menuView.bottomAnchor.constraint(
+                equalTo: closeButton.topAnchor, constant: .menuViewBottomPadding)
+        ])
+        
+        container.layoutIfNeeded()
         
         /// Moves closeButton on top of the menuView
         container.bringSubviewToFront(closeButton)
@@ -115,9 +116,8 @@ private extension CGAffineTransform {
 
 private extension CGFloat {
     static let menuViewHeight: CGFloat = UIScreen.main.bounds.height * .menuViewHeightCoefficient
-    static let menuViewHeightCoefficient: CGFloat = 0.218
-    static let menuViewBottomPadding: CGFloat = 32 + .collectionViewExtraSpacing
-    static let collectionViewExtraSpacing: CGFloat = 15
+    static let menuViewHeightCoefficient: CGFloat = 0.15
+    static let menuViewBottomPadding: CGFloat = 10
 }
 
 // MARK: - IdentifiableController
