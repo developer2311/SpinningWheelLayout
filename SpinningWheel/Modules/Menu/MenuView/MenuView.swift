@@ -7,12 +7,15 @@
 
 import UIKit
 
+typealias SpinningWheelItemInteractiomCompletion = (_ selectedItem: SpinningWheelItem?) -> Void
+
 final class MenuView: UIView {
     
     // MARK: - Interaction -
     
-    var onFinishInteraction: ((_ selectedItem: SpinningWheelItem?) -> Void)?
+    var onFinishInteraction: SpinningWheelItemInteractiomCompletion?
     var onStateChanged: ((_ newValue: MenuViewState) -> Void)?
+    var onChangeSelectedItem: SpinningWheelItemInteractiomCompletion?
     
     // MARK: - UI Elements -
     
@@ -40,15 +43,6 @@ final class MenuView: UIView {
         collectionView.delegate = self
         return collectionView
     }()
-    private lazy var selectedItemLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.isHidden = state == .simple
-        label.font = .BRHendrixBold(of: 35)
-        label.textColor = Colors.buttonTextPrimary.color
-        return label
-    }()
     
     // MARK: - Private properties -
     
@@ -62,13 +56,12 @@ final class MenuView: UIView {
     private var state: MenuViewState = .simple {
         didSet {
             onStateChanged?(state)
-            actualiseSelectedItemVisibility()
             collectionView.reloadData()
         }
     }
     private var selectedItemIndex: Int? {
         didSet {
-            updateSelectedItemText()
+            onChangeSelectedItem?(selectedItem)
         }
     }
     private var selectedItem: SpinningWheelItem? {
@@ -116,15 +109,6 @@ private extension MenuView {
         }
     }
     
-    func updateSelectedItemText() {
-        guard let selectedItem else {
-            return
-        }
-        UIView.animate(withDuration: 0.05) {
-            self.selectedItemLabel.text = selectedItem.type.title
-        }
-    }
-    
     func setupCollectionView() {
         SpinningWheelCollectionViewCell.registerClass(in: collectionView)
         layoutCollectionView()
@@ -134,12 +118,6 @@ private extension MenuView {
     func layoutCollectionView() {
         pinSubview(collectionContainer)
         collectionContainer.pinSubview(collectionView)
-        addSubview(selectedItemLabel)
-
-        NSLayoutConstraint.activate([
-            selectedItemLabel.bottomAnchor.constraint(equalTo: collectionContainer.topAnchor),
-            selectedItemLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
     }
     
     func reconfigureCell(at indexPath: IndexPath) {
@@ -225,12 +203,12 @@ private extension MenuView {
         }
     }
     
-    func actualiseSelectedItemVisibility() {
-        UIView.animate(withDuration: .selectedItemVisibilityAnimationDuration) {
-            self.selectedItemLabel.alpha = self.state == .simple ? .zero : 1
-            self.selectedItemLabel.isHidden = self.state == .simple
-        }
-    }
+//    func actualiseSelectedItemVisibility() {
+//        UIView.animate(withDuration: .selectedItemVisibilityAnimationDuration) {
+//            self.selectedItemLabel.alpha = self.state == .simple ? .zero : 1
+//            self.selectedItemLabel.isHidden = self.state == .simple
+//        }
+//    }
 }
 
 // MARK: - UICollectionViewDataSource -
@@ -256,8 +234,4 @@ extension MenuView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         updateHighlightedStates(indexPathToHighlight: indexPath)
     }
-}
-
-private extension Double {
-    static let selectedItemVisibilityAnimationDuration = 0.25
 }

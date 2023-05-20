@@ -33,9 +33,22 @@ final class MenuViewController: UIViewController {
         }
         view.onStateChanged = { [weak self] newValue in
             self?.viewModel.menuState = newValue
+            self?.actualiseSelectedItemVisibility()
             self?.actualiseCloseButtonVisibility()
         }
+        view.onChangeSelectedItem = { [weak self] updatedItem in
+            self?.updateSelectedItemText(updatedItem)
+        }
         return view
+    }()
+    private lazy var selectedItemLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.isHidden = viewModel.menuState == .simple
+        label.font = .BRHendrixBold(of: 35)
+        label.textColor = Colors.buttonTextPrimary.color
+        return label
     }()
         
     // MARK: - Properties -
@@ -69,6 +82,33 @@ private extension MenuViewController {
     
     func initialSetup() {
         setupMenuView()
+        setupSelectedItemLabel()
+    }
+    
+    func setupSelectedItemLabel() {
+        container.addSubview(selectedItemLabel)
+
+        NSLayoutConstraint.activate([
+            selectedItemLabel.bottomAnchor.constraint(equalTo: menuView.topAnchor),
+            selectedItemLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor)
+        ])
+        container.layoutIfNeeded()
+    }
+    
+    func actualiseSelectedItemVisibility() {
+        UIView.animate(withDuration: .selectedItemVisibilityAnimationDuration) {
+            self.selectedItemLabel.alpha = self.viewModel.menuState == .simple ? .zero : 1
+            self.selectedItemLabel.isHidden = self.viewModel.menuState == .simple
+        }
+    }
+    
+    func updateSelectedItemText(_ item: SpinningWheelItem?) {
+        guard let item else {
+            return
+        }
+        UIView.animate(withDuration: 0.05) {
+            self.selectedItemLabel.text = item.type.title
+        }
     }
     
     func close() {
@@ -123,3 +163,7 @@ private extension CGFloat {
 // MARK: - IdentifiableController
 
 extension MenuViewController: IdentifiableController {}
+
+private extension Double {
+    static let selectedItemVisibilityAnimationDuration = 0.25
+}
