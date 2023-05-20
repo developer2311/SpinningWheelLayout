@@ -51,7 +51,15 @@ final class MenuViewController: UIViewController {
         label.textColor = Colors.buttonTextPrimary.color
         return label
     }()
-        
+    private lazy var swipeGesture: UISwipeGestureRecognizer = {
+        let recognizer = UISwipeGestureRecognizer(
+            target: self,
+            action: #selector(handleSwipeGesture(_:))
+        )
+        recognizer.direction = .down
+        return recognizer
+    }()
+    
     // MARK: - Properties -
     
     var viewModel: MenuViewModel!
@@ -84,11 +92,16 @@ private extension MenuViewController {
     func initialSetup() {
         setupMenuView()
         setupSelectedItemLabel()
+        setupSwipeToClose()
+    }
+    
+    func setupSwipeToClose() {
+        view.addGestureRecognizer(swipeGesture)
     }
     
     func setupSelectedItemLabel() {
         container.addSubview(selectedItemLabel)
-
+        
         NSLayoutConstraint.activate([
             selectedItemLabel.bottomAnchor.constraint(equalTo: menuView.topAnchor),
             selectedItemLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor)
@@ -143,6 +156,14 @@ private extension MenuViewController {
         UIView.animate(withDuration: 0.3, delay: .zero, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.8, options: .curveEaseIn) {
             self.menuView.alpha = 1
             self.menuView.transform = .identity
+        }
+    }
+    
+    @objc func handleSwipeGesture(_ recognizer: UISwipeGestureRecognizer) {
+        switch recognizer.direction {
+        case .down:
+            close()
+        default: break
         }
     }
 }
