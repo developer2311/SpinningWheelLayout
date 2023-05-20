@@ -62,7 +62,7 @@ final class MenuView: UIView {
     private var state: MenuViewState = .simple {
         didSet {
             onStateChanged?(state)
-            selectedItemLabel.isHidden = state == .simple
+            actualiseSelectedItemVisibility()
             collectionView.reloadData()
         }
     }
@@ -143,9 +143,13 @@ private extension MenuView {
     }
     
     func reconfigureCell(at indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? SpinningWheelCollectionViewCell {
+        if let cell = getCell(at: indexPath) {
             cell.setState(dataSource[indexPath.item].state)
         }
+    }
+    
+    func getCell(at indexPath: IndexPath) -> SpinningWheelCollectionViewCell? {
+        collectionView.cellForItem(at: indexPath) as? SpinningWheelCollectionViewCell
     }
     
     ///
@@ -177,7 +181,11 @@ private extension MenuView {
         
         // Finishes interaction and passes a selected item only when a state is not interactive
         if state == .simple {
-            onFinishInteraction?(selectedItem)
+            if let cell = getCell(at: indexPathToHighlight) {
+                cell.animateCellSelection {
+                    self.onFinishInteraction?(self.selectedItem)
+                }
+            }
             return
         }
         
@@ -209,13 +217,16 @@ private extension MenuView {
     
     func highlightItemIfIntersects(with location: CGPoint) {
         for cell in collectionView.visibleCells {
-            if cell.frame.contains(location) {
-                if let indexPath = collectionView.indexPath(for: cell) {
-                    updateHighlightedStates(indexPathToHighlight: indexPath)
-                }
+            if cell.frame.contains(location),
+               let indexPath = collectionView.indexPath(for: cell) {
+                updateHighlightedStates(indexPathToHighlight: indexPath)
                 break
             }
         }
+    }
+    
+    func actualiseSelectedItemVisibility() {
+        selectedItemLabel.isHidden = state == .simple
     }
 }
 

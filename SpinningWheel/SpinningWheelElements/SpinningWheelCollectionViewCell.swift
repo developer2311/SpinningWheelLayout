@@ -87,6 +87,11 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
         }
         itemState = newValue
     }
+    
+    func animateCellSelection(animationDuration: Double = 0.3, completion: EmptyBlock? = nil) {
+        
+        container.animateSelection(completion: completion)
+    }
 }
 
 // MARK: - Private methods -
