@@ -12,12 +12,14 @@ import SwiftUI
 final class MenuViewController: UIViewController {
     
     // MARK: - UI -
+    
     @IBOutlet private weak var container: UIView!
     @IBOutlet private weak var blurView: UIVisualEffectView!
     @IBOutlet private weak var closeButton: RoundedButton! {
         didSet {
             closeButton.setImage(Images.menuButton.image)
             closeButton.setShadowOpacity(0.25)
+            actualiseCloseButtonVisibility()
         }
     }
     private lazy var menuView: MenuView = {
@@ -31,7 +33,7 @@ final class MenuViewController: UIViewController {
         }
         view.onStateChanged = { [weak self] newValue in
             self?.viewModel.menuState = newValue
-            self?.closeButton.isHidden = newValue == .interactive
+            self?.actualiseCloseButtonVisibility()
         }
         return view
     }()
@@ -89,6 +91,10 @@ private extension MenuViewController {
         container.bringSubviewToFront(closeButton)
         
         menuView.transform = .menuViewDefaultTranslation(height: menuView.bounds.height)
+    }
+    
+    func actualiseCloseButtonVisibility() {
+        closeButton.isHidden = viewModel.menuState == .interactive
     }
     
     func showMenuViewAnimated() {

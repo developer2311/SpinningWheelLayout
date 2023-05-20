@@ -22,6 +22,7 @@ final class SpinningWheelCollectionViewCell: UICollectionViewCell,
         let label = UILabel()
         label.textAlignment = .center
         label.font = .BRHendrixBold(of: .buttonFontSize)
+        label.textColor = Colors.buttonTextPrimary.color
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

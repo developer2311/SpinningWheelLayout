@@ -9,10 +9,12 @@ import UIKit
 
 final class MenuView: UIView {
     
+    // MARK: - Interaction -
+    
     var onFinishInteraction: ((_ selectedItem: SpinningWheelItem?) -> Void)?
     var onStateChanged: ((_ newValue: MenuViewState) -> Void)?
     
-    // MARK: - Private Properties -
+    // MARK: - UI Elements -
     
     private lazy var dataSource: [SpinningWheelItem] = {
         let items: [SpinningWheelItem] = SpinningWheelItemType.allCases.map {
@@ -38,6 +40,18 @@ final class MenuView: UIView {
         collectionView.delegate = self
         return collectionView
     }()
+    private lazy var selectedItemLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.isHidden = state == .simple
+        label.font = .BRHendrixBold(of: 35)
+        label.textColor = Colors.buttonTextPrimary.color
+        return label
+    }()
+    
+    // MARK: - Private properties -
+    
     private lazy var panGesture: UIPanGestureRecognizer = {
         let recognizer = UIPanGestureRecognizer(
             target: self,
@@ -48,10 +62,15 @@ final class MenuView: UIView {
     private var state: MenuViewState = .simple {
         didSet {
             onStateChanged?(state)
+            selectedItemLabel.isHidden = state == .simple
             collectionView.reloadData()
         }
     }
-    private var selectedItemIndex: Int?
+    private var selectedItemIndex: Int? {
+        didSet {
+            updateSelectedItemText()
+        }
+    }
     private var selectedItem: SpinningWheelItem? {
         guard let selectedItemIndex else {
             return nil
@@ -97,6 +116,15 @@ private extension MenuView {
         }
     }
     
+    func updateSelectedItemText() {
+        guard let selectedItem else {
+            return
+        }
+        UIView.animate(withDuration: 0.05) {
+            self.selectedItemLabel.text = selectedItem.type.title
+        }
+    }
+    
     func setupCollectionView() {
         SpinningWheelCollectionViewCell.registerClass(in: collectionView)
         layoutCollectionView()
@@ -106,6 +134,12 @@ private extension MenuView {
     func layoutCollectionView() {
         pinSubview(collectionContainer)
         collectionContainer.pinSubview(collectionView)
+        addSubview(selectedItemLabel)
+
+        NSLayoutConstraint.activate([
+            selectedItemLabel.bottomAnchor.constraint(equalTo: collectionContainer.topAnchor),
+            selectedItemLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+        ])
     }
     
     func reconfigureCell(at indexPath: IndexPath) {
