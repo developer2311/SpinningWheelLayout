@@ -35,6 +35,7 @@
 		DD89A84F2A1832E300D852AF /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A84E2A1832E300D852AF /* CGFloat+Extension.swift */; };
 		DD89A8512A18330800D852AF /* CGAffineTransform+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A8502A18330800D852AF /* CGAffineTransform+Extension.swift */; };
 		DD89A8542A1838BC00D852AF /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A8532A1838BC00D852AF /* MenuViewModel.swift */; };
+		DD89A8562A196C7900D852AF /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A8552A196C7900D852AF /* HapticFeedbackGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		DD89A84E2A1832E300D852AF /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		DD89A8502A18330800D852AF /* CGAffineTransform+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform+Extension.swift"; sourceTree = "<group>"; };
 		DD89A8532A1838BC00D852AF /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		DD89A8552A196C7900D852AF /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 			children = (
 				DD0781BE2A16EA1500D7A88B /* Navigation */,
 				DD0781B92A16DFE500D7A88B /* RoundedButton */,
+				DD89A8552A196C7900D852AF /* HapticFeedbackGenerator.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				DD0781C22A16F3F800D7A88B /* MenuViewController.swift in Sources */,
 				DD89A84F2A1832E300D852AF /* CGFloat+Extension.swift in Sources */,
 				DD0781942A13954100D7A88B /* SpinningWheelLayout.swift in Sources */,
+				DD89A8562A196C7900D852AF /* HapticFeedbackGenerator.swift in Sources */,
 				DD0781BB2A16DFF400D7A88B /* RoundedButton.swift in Sources */,
 				DD0781802A13952E00D7A88B /* AppDelegate.swift in Sources */,
 				DD0781822A13952E00D7A88B /* SceneDelegate.swift in Sources */,

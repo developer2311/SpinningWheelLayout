@@ -37,6 +37,7 @@ final class MenuViewController: UIViewController {
             self?.actualiseCloseButtonVisibility()
         }
         view.onChangeSelectedItem = { [weak self] updatedItem in
+            HapticFeedbackGenerator.shared.vibrateSelectionChanged()
             self?.updateSelectedItemText(updatedItem)
         }
         return view

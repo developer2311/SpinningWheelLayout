@@ -69,6 +69,7 @@ final class MainViewController: UIViewController {
             }
         case .ended:
             showMenu(isInteractive: true)
+            HapticFeedbackGenerator.shared.vibrateLongPress()
             self.menuButton.transform = .identity
         default:
             break
