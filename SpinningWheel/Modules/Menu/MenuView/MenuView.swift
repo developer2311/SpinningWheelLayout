@@ -226,7 +226,10 @@ private extension MenuView {
     }
     
     func actualiseSelectedItemVisibility() {
-        selectedItemLabel.isHidden = state == .simple
+        UIView.animate(withDuration: .selectedItemVisibilityAnimationDuration) {
+            self.selectedItemLabel.alpha = self.state == .simple ? .zero : 1
+            self.selectedItemLabel.isHidden = self.state == .simple
+        }
     }
 }
 
@@ -255,3 +258,6 @@ extension MenuView: UICollectionViewDelegate {
     }
 }
 
+private extension Double {
+    static let selectedItemVisibilityAnimationDuration = 0.25
+}
