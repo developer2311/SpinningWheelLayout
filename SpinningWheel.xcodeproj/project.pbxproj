@@ -13,10 +13,7 @@
 		DD0781872A13952E00D7A88B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD0781852A13952E00D7A88B /* Main.storyboard */; };
 		DD0781892A13952F00D7A88B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD0781882A13952F00D7A88B /* Images.xcassets */; };
 		DD07818C2A13952F00D7A88B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD07818A2A13952F00D7A88B /* LaunchScreen.storyboard */; };
-		DD0781942A13954100D7A88B /* SpinningWheelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781932A13954100D7A88B /* SpinningWheelLayout.swift */; };
-		DD0781972A13991B00D7A88B /* SpinningWheelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781962A13991B00D7A88B /* SpinningWheelCollectionViewCell.swift */; };
 		DD07819A2A1399BE00D7A88B /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781992A1399BE00D7A88B /* UIViewExtension.swift */; };
-		DD07819C2A13B6AD00D7A88B /* SpinningWheelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD07819B2A13B6AD00D7A88B /* SpinningWheelItem.swift */; };
 		DD07819E2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD07819D2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift */; };
 		DD0781A12A16BB7400D7A88B /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781A02A16BB7400D7A88B /* MenuView.swift */; };
 		DD0781A42A16BE1E00D7A88B /* UICollectionViewCell+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0781A32A16BE1E00D7A88B /* UICollectionViewCell+Tools.swift */; };
@@ -36,6 +33,9 @@
 		DD89A8512A18330800D852AF /* CGAffineTransform+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A8502A18330800D852AF /* CGAffineTransform+Extension.swift */; };
 		DD89A8542A1838BC00D852AF /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A8532A1838BC00D852AF /* MenuViewModel.swift */; };
 		DD89A8562A196C7900D852AF /* HapticFeedbackGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A8552A196C7900D852AF /* HapticFeedbackGenerator.swift */; };
+		DD89A85B2A19A18F00D852AF /* SpinningWheelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A8582A19A18F00D852AF /* SpinningWheelCollectionViewCell.swift */; };
+		DD89A85C2A19A18F00D852AF /* SpinningWheelLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A8592A19A18F00D852AF /* SpinningWheelLayout.swift */; };
+		DD89A85D2A19A18F00D852AF /* SpinningWheelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD89A85A2A19A18F00D852AF /* SpinningWheelItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,10 +47,7 @@
 		DD0781882A13952F00D7A88B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DD07818B2A13952F00D7A88B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD07818D2A13952F00D7A88B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD0781932A13954100D7A88B /* SpinningWheelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningWheelLayout.swift; sourceTree = "<group>"; };
-		DD0781962A13991B00D7A88B /* SpinningWheelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningWheelCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD0781992A1399BE00D7A88B /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		DD07819B2A13B6AD00D7A88B /* SpinningWheelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningWheelItem.swift; sourceTree = "<group>"; };
 		DD07819D2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+LayoutExtension.swift"; sourceTree = "<group>"; };
 		DD0781A02A16BB7400D7A88B /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		DD0781A32A16BE1E00D7A88B /* UICollectionViewCell+Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Tools.swift"; sourceTree = "<group>"; };
@@ -70,6 +67,9 @@
 		DD89A8502A18330800D852AF /* CGAffineTransform+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform+Extension.swift"; sourceTree = "<group>"; };
 		DD89A8532A1838BC00D852AF /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		DD89A8552A196C7900D852AF /* HapticFeedbackGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackGenerator.swift; sourceTree = "<group>"; };
+		DD89A8582A19A18F00D852AF /* SpinningWheelCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinningWheelCollectionViewCell.swift; sourceTree = "<group>"; };
+		DD89A8592A19A18F00D852AF /* SpinningWheelLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinningWheelLayout.swift; sourceTree = "<group>"; };
+		DD89A85A2A19A18F00D852AF /* SpinningWheelItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinningWheelItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,21 +107,10 @@
 				DD0781982A1399B100D7A88B /* Extensions */,
 				DD0781A52A16CDD400D7A88B /* Modules */,
 				DD0781AB2A16D11A00D7A88B /* Resources */,
-				DD0781952A1398EF00D7A88B /* SpinningWheelElements */,
 				DD0781A22A16BDF900D7A88B /* Tools */,
 				DD07818D2A13952F00D7A88B /* Info.plist */,
 			);
 			path = SpinningWheel;
-			sourceTree = "<group>";
-		};
-		DD0781952A1398EF00D7A88B /* SpinningWheelElements */ = {
-			isa = PBXGroup;
-			children = (
-				DD0781932A13954100D7A88B /* SpinningWheelLayout.swift */,
-				DD0781962A13991B00D7A88B /* SpinningWheelCollectionViewCell.swift */,
-				DD07819B2A13B6AD00D7A88B /* SpinningWheelItem.swift */,
-			);
-			path = SpinningWheelElements;
 			sourceTree = "<group>";
 		};
 		DD0781982A1399B100D7A88B /* Extensions */ = {
@@ -140,6 +129,7 @@
 		DD07819F2A16BB5200D7A88B /* MenuView */ = {
 			isa = PBXGroup;
 			children = (
+				DD89A8572A19A18F00D852AF /* SpinningWheelElements */,
 				DD0781A02A16BB7400D7A88B /* MenuView.swift */,
 				DD89A84C2A181FBD00D852AF /* MenuViewState.swift */,
 			);
@@ -264,6 +254,16 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		DD89A8572A19A18F00D852AF /* SpinningWheelElements */ = {
+			isa = PBXGroup;
+			children = (
+				DD89A8582A19A18F00D852AF /* SpinningWheelCollectionViewCell.swift */,
+				DD89A8592A19A18F00D852AF /* SpinningWheelLayout.swift */,
+				DD89A85A2A19A18F00D852AF /* SpinningWheelItem.swift */,
+			);
+			path = SpinningWheelElements;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -339,7 +339,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD89A8512A18330800D852AF /* CGAffineTransform+Extension.swift in Sources */,
-				DD07819C2A13B6AD00D7A88B /* SpinningWheelItem.swift in Sources */,
 				DD0781B62A16DCDB00D7A88B /* Images.swift in Sources */,
 				DD0781B72A16DCDB00D7A88B /* Fonts.swift in Sources */,
 				DD0781BD2A16E9E500D7A88B /* UIViewController+Extension.swift in Sources */,
@@ -347,20 +346,21 @@
 				DD0781B52A16DCDB00D7A88B /* Colors.swift in Sources */,
 				DD07819A2A1399BE00D7A88B /* UIViewExtension.swift in Sources */,
 				DD89A84B2A1810A200D852AF /* UIFont+Extension.swift in Sources */,
+				DD89A85B2A19A18F00D852AF /* SpinningWheelCollectionViewCell.swift in Sources */,
+				DD89A85C2A19A18F00D852AF /* SpinningWheelLayout.swift in Sources */,
 				DD0781A42A16BE1E00D7A88B /* UICollectionViewCell+Tools.swift in Sources */,
 				DD89A84D2A181FBD00D852AF /* MenuViewState.swift in Sources */,
-				DD0781972A13991B00D7A88B /* SpinningWheelCollectionViewCell.swift in Sources */,
 				DD0781842A13952E00D7A88B /* MainViewController.swift in Sources */,
 				DD0781A12A16BB7400D7A88B /* MenuView.swift in Sources */,
 				DD07819E2A16B8FB00D7A88B /* UICollectionView+LayoutExtension.swift in Sources */,
 				DD0781C22A16F3F800D7A88B /* MenuViewController.swift in Sources */,
 				DD89A84F2A1832E300D852AF /* CGFloat+Extension.swift in Sources */,
-				DD0781942A13954100D7A88B /* SpinningWheelLayout.swift in Sources */,
 				DD89A8562A196C7900D852AF /* HapticFeedbackGenerator.swift in Sources */,
 				DD0781BB2A16DFF400D7A88B /* RoundedButton.swift in Sources */,
 				DD0781802A13952E00D7A88B /* AppDelegate.swift in Sources */,
 				DD0781822A13952E00D7A88B /* SceneDelegate.swift in Sources */,
 				DD0781C02A16EA2600D7A88B /* NavigationRoute.swift in Sources */,
+				DD89A85D2A19A18F00D852AF /* SpinningWheelItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
