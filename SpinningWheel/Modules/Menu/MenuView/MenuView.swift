@@ -177,6 +177,7 @@ private extension MenuView {
         
         switch recognizer.state {
         case .began:
+            // Switches to interactive state when pan gesture is detected
             if state != .interactive {
                 state = .interactive
             }

@@ -178,7 +178,7 @@ private extension CGAffineTransform {
 
 private extension CGFloat {
     static let menuViewHeight: CGFloat = UIScreen.main.bounds.height * .menuViewHeightCoefficient
-    static let menuViewHeightCoefficient: CGFloat = 0.15
+    static let menuViewHeightCoefficient: CGFloat = 0.17
     static let menuViewBottomPadding: CGFloat = 10
 }
 
