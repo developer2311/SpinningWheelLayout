@@ -203,13 +203,6 @@ private extension MenuView {
             }
         }
     }
-    
-//    func actualiseSelectedItemVisibility() {
-//        UIView.animate(withDuration: .selectedItemVisibilityAnimationDuration) {
-//            self.selectedItemLabel.alpha = self.state == .simple ? .zero : 1
-//            self.selectedItemLabel.isHidden = self.state == .simple
-//        }
-//    }
 }
 
 // MARK: - UICollectionViewDataSource -
