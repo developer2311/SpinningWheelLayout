@@ -4,7 +4,10 @@
 
 How does it look like:
 
-![Simulator Screen Recording - iPhone 15 Pro - 2023-11-14 at 15 45 12](https://github.com/mykytalazariev/SpinningWheelLayout/assets/24232961/90571175-da90-4f38-9633-e3e10e4cf803)
+
+
+https://github.com/mykytalazariev/SpinningWheelLayout/assets/24232961/8ca118fd-aa07-496e-9200-f579af0ecc64
+
 
 
 ## Tech Requirements
