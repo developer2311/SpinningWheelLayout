@@ -1,8 +1,13 @@
-# MenuView
+# MenuView 
 
 > This is the repository of the MenuView iOS application that was created specifically for the test task.
 
-## Requirements
+How does it look like:
+
+![Simulator Screen Recording - iPhone 15 Pro - 2023-11-14 at 15 45 12](https://github.com/mykytalazariev/SpinningWheelLayout/assets/24232961/90571175-da90-4f38-9633-e3e10e4cf803)
+
+
+## Tech Requirements
 
 - **Xcode 12+**
 - **If using M1:** ```gem install --user-install ffi -- --enable-libffi-alloc```
